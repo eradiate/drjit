@@ -102,6 +102,8 @@ struct DynamicArray
     }
 
     DynamicArray &operator=(const DynamicArray &a) {
+        if (this == &a)
+            return *this;
         if (m_free)
             delete[] m_data;
         m_data = new Value[a.m_size];
